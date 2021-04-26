@@ -1,4 +1,5 @@
-import React from "react";
+import React, { Component } from "react";
+// import { Redirect } from "react-router-dom";
 import { v4 as uuid } from "uuid";
 import { Formik } from "formik";
 
@@ -32,21 +33,19 @@ function addProductDetails(product) {
   };
 }
 
-function NewProductForm({ toggleNewProductForm, saveNewProduct }) {
-  return (
-    <div className="row mb-4 mt-2">
-      <div className="col col-10">
-        <div className="row justify-content-between">
-          <div className="col col-8">
-            <h2>New product</h2>
-          </div>
-          <div className="col col-4 ml-auto d-flex justify-content-end">
-            <Button onClick={toggleNewProductForm}>Close form</Button>
-          </div>
-        </div>
-        <hr />
-      </div>
-      <div className="col col-10">
+// eslint-disable-next-line react/prefer-stateless-function
+class NewProductForm extends Component {
+  // ...
+  // state: {
+  //   submitted: false
+  // }
+  // ...
+  render() {
+    // const { submitted } = this.state;
+    const { saveNewProduct } = this.props;
+
+    return (
+      <>
         <Formik
           initialValues={{
             title: "",
@@ -60,9 +59,11 @@ function NewProductForm({ toggleNewProductForm, saveNewProduct }) {
             authorEmail: "",
           }}
           validationSchema={productSchema}
-          onSubmit={(values) => {
+          onSubmit={(values, { setSubmitting }) => {
             const newProduct = addProductDetails(values);
             saveNewProduct(newProduct);
+            setSubmitting(true);
+            // this.setSubmitted();
           }}
         >
           {({
@@ -74,6 +75,7 @@ function NewProductForm({ toggleNewProductForm, saveNewProduct }) {
             touched,
             isValidating,
             isValid,
+            isSubmitting,
           }) => (
             <form onSubmit={handleSubmit}>
               <Input
@@ -176,14 +178,15 @@ function NewProductForm({ toggleNewProductForm, saveNewProduct }) {
                 errorMessage={errors.authorEmail}
               />
               <Button submitButton block disabled={isValidating || !isValid}>
-                Submit
+                {isSubmitting ? "Submitting..." : "Submit"}
               </Button>
             </form>
           )}
         </Formik>
-      </div>
-    </div>
-  );
+        {/* {submitted && <Redirect to="/" />} */}
+      </>
+    );
+  }
 }
 
 export default NewProductForm;

@@ -1,6 +1,8 @@
 import React, { Component } from "react";
+import { BrowserRouter, Route } from "react-router-dom";
 
 import Home from "./pages/Home";
+// import NewProduct from "./pages/NewProduct";
 
 import * as api from "./api";
 
@@ -47,7 +49,6 @@ class App extends Component {
       isLoading: false,
       hasError: false,
       loadingError: null,
-      newProductFormOpen: false,
     };
 
     this.handleAddToCart = this.handleAddToCart.bind(this);
@@ -57,7 +58,6 @@ class App extends Component {
     this.handleUpVote = this.handleUpVote.bind(this);
     this.handleSetFavorite = this.handleSetFavorite.bind(this);
     this.saveNewProduct = this.saveNewProduct.bind(this);
-    this.toggleNewProductForm = this.toggleNewProductForm.bind(this);
   }
 
   componentDidMount() {
@@ -227,12 +227,6 @@ class App extends Component {
     }));
   }
 
-  toggleNewProductForm() {
-    this.setState((prevState) => ({
-      newProductFormOpen: !prevState.newProductFormOpen,
-    }));
-  }
-
   render() {
     const {
       cartItems,
@@ -240,26 +234,32 @@ class App extends Component {
       isLoading,
       hasError,
       loadingError,
-      newProductFormOpen,
     } = this.state;
 
     return (
-      <Home
-        cartItems={cartItems}
-        products={products}
-        isLoading={isLoading}
-        hasError={hasError}
-        loadingError={loadingError}
-        handleDownVote={this.handleDownVote}
-        handleUpVote={this.handleUpVote}
-        handleSetFavorite={this.handleSetFavorite}
-        handleAddToCart={this.handleAddToCart}
-        handleRemove={this.handleRemove}
-        handleChange={this.handleChange}
-        newProductFormOpen={newProductFormOpen}
-        saveNewProduct={this.saveNewProduct}
-        toggleNewProductForm={this.toggleNewProductForm}
-      />
+      <BrowserRouter>
+        <Route
+          path="/"
+          exact
+          render={(routeProps) => (
+            <Home
+              {...routeProps}
+              cartItems={cartItems}
+              products={products}
+              isLoading={isLoading}
+              hasError={hasError}
+              loadingError={loadingError}
+              handleDownVote={this.handleDownVote}
+              handleUpVote={this.handleUpVote}
+              handleSetFavorite={this.handleSetFavorite}
+              handleAddToCart={this.handleAddToCart}
+              handleRemove={this.handleRemove}
+              handleChange={this.handleChange}
+            />
+          )}
+        />
+        {/* route path="/new-product" <NewProduct ...stuff /> */}
+      </BrowserRouter>
     );
   }
 }
