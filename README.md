@@ -113,7 +113,25 @@ found in the doc that the academic team will provide you.
 - Once you are done, you can move on to the optional ones that are marked as
   `Extra 💯`
 
-### 1. Product form
+### 1. `/new-product` route
+
+#### File
+
+```sh
+/src/App.js
+```
+
+1. uncomment all the code
+2. add the `Route` component for the path
+   1. path: `/new-product`
+   2. component: `NewProduct` from the pages folder
+   3. follow the code that is used to render the `Home` component route
+
+#### Test suite name
+
+@TODO
+
+### 2. `NewProductForm` component
 
 #### File
 
@@ -121,11 +139,13 @@ found in the doc that the academic team will provide you.
 /src/components/NewProductForm/NewProductForm.js
 ```
 
-1. add all the missing form inputs that the `initialValues` object defines
-
-```jsx
-
-```
+1. uncomment all the code
+2. finish the `setState` code so that a `setSubmitted()` method can be called
+   that sets the `submitted: true` prop after a timeout, like `500ms`.
+3. this prop is used to conditionally render the
+   `{submitted && <Redirect to="/" />}` code in the same file
+4. this will save the new form and once the `submitted` prop is `true`, the form
+   will redirect to the home page
 
 #### Test suite name
 
