@@ -6,7 +6,7 @@
 
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
-# Assembler School: React Shopping Cart Project
+# Assembler School: React Shopping Cart React Router
 
 In this project you will learn how to create a React.js and how to apply all the
 important concepts.
@@ -26,7 +26,7 @@ account:
 <img src="https://docs.github.com/assets/images/help/repository/fork_button.jpg" alt="Fork on GitHub" width='450'>
 
 ```
-$ git clone https://github.com/assembler-school/react-shopping-cart-project.git
+$ git clone https://github.com/assembler-school/react-shopping-cart-react-router.git
 ```
 
 ## Contents and Branches Naming Strategy
@@ -36,9 +36,8 @@ section.
 
 The branches follow a naming strategy like the following:
 
-- `{NN}-{section-name}`: includes the main contents and the instructions of the
-  section
-- `{NN}-{section-name}-solution`: includes the solution of the section
+- `main`: includes the main contents and the instructions
+- `assembler-solution`: includes the solution
 
 ### Fetching All the Branches
 
@@ -74,19 +73,21 @@ $ npm install
 
 ### Running the Tests
 
-@TODO
+The tests that validate your solution can be executed by running the following
+command:
 
 ```
-$ npm run test:components
+$ npm run test
 ```
 
 ### Git `precommit` and `prepush` Hooks
 
-@todo
+In the `assembler-solution` branch you can see an implementation of these tools
+if you'd like to use them.
 
 ## Deployment
 
-@TODO
+In this pill we won't deploy the app.
 
 ## Technologies used
 
@@ -111,6 +112,24 @@ found in the doc that the academic team will provide you.
 - You must use semantic HTML5 elements for all the markup of the application
 - Once you are done, you can move on to the optional ones that are marked as
   `Extra 💯`
+
+### 1. Product form
+
+#### File
+
+```sh
+/src/components/NewProductForm/NewProductForm.js
+```
+
+1. add all the missing form inputs that the `initialValues` object defines
+
+```jsx
+
+```
+
+#### Test suite name
+
+@TODO
 
 ## Project delivery
 
